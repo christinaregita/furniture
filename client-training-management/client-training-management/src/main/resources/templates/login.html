@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-IA-Compatible"content="IE-edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>TRAINING MANAGEMENT</title>
+        <link rel="stylesheet" type="text/css" href="css/login.css">
+    </head>
+    <body>
+        <div class="container" id='right' style="background-size: cover; background-image: url('css/images/background_login.jpg')";>
+                    <div class="content container d-flex justify-content-center align-items-center flex-column">
+                        <p th:text="${param.error} ? 'Username or password incorrect' : ''"></p>
+                        <p th:text="${param.logout} ? 'You have been logged out' : ''"></p>
+                        <form th:action="@{/login}" method="post" th:object="${auth}">
+                            <div class="container d-flex justify-content-center align-items-center flex-column center">
+                                <img src="css/images/logo_imb.png" style="width: 50%;">    
+                                <h1 class="title">Login Form</h1>
+                                <label for="username"><b>Username</b></label>
+                                <input type="text" class="form-control" placeholder="Enter Username" name="username" th:field="*{username}" required>
+                                <label for="password"><b>Password</b></label>
+                                <input type="password" class="form-control" placeholder="Enter Password" name="password" th:field="*{password}"required>
+                                <button class="button button3" id="loginForm" type="submit">Login</button>
+                            </div>
+                        </form>
+                    </div>
+            </div>
+    </body>
+</html>
+
+

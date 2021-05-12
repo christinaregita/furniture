@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <title th:remove="all">Template for HTML email with inline image</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  </head>
+  <body>
+    
+<p>Hi <span th:text="${userName}"></span>
+    </p>
+    <p>
+        Congratulations! Your request to join <b th:text="${eventName}">title</b> has been approved. The event will be held on:
+    </p>
+    <th:block th:with="sdf = ${new java.text.SimpleDateFormat('yyyy-MM-dd')}">
+    <div>Date : <span th:text="${#dates.format(sdf.parse(date), 'EEE, d MMM yyyy')}"></span></div>
+    </th:block>
+    <th:block th:with="sdf = ${new java.text.SimpleDateFormat('HH:mm:ss')}">
+    <div>Time : <span th:text="${#dates.format(sdf.parse(startTime), 'HH:mm')}"></span> - <span th:text="${#dates.format(sdf.parse(endTime), 'HH:mm')}"></span></div>
+    </th:block>
+    <div>Location : <span th:text="${loc}"></span></div>
+    
+    <p>
+      Can't wait to see you!
+    </p>
+    
+<!--    <p>Your hobbies are:</p>
+    <ul th:remove="all-but-first">
+      <li th:each="hobby : ${hobbies}" th:text="${hobby}">Reading</li>
+      <li>Writing</li>
+      <li>Bowling</li>
+    </ul>
+    <p>
+      You can find <b>your inlined image</b> just below this text.
+    </p>
+    <p>
+      <img src="sample.png" th:src="|cid:${imageResourceName}|" />
+    </p>-->
+    <p>
+      Best Regards, <br />
+      <em>IMB Training Management Team</em>
+    </p>
+  </body>
+</html>
